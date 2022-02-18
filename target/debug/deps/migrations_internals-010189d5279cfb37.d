@@ -1,0 +1,10 @@
+/Users/nasanjargal/Desktop/1rest/rest/target/debug/deps/migrations_internals-010189d5279cfb37.rmeta: /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/lib.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/connection.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/migration.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/schema.rs
+
+/Users/nasanjargal/Desktop/1rest/rest/target/debug/deps/libmigrations_internals-010189d5279cfb37.rlib: /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/lib.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/connection.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/migration.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/schema.rs
+
+/Users/nasanjargal/Desktop/1rest/rest/target/debug/deps/migrations_internals-010189d5279cfb37.d: /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/lib.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/connection.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/migration.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/schema.rs
+
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/lib.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/connection.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/migration.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/migrations_internals-1.4.1/src/schema.rs:

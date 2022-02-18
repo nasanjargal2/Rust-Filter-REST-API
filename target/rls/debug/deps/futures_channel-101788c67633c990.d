@@ -1,0 +1,10 @@
+/Users/nasanjargal/Desktop/1rest/rest/target/rls/debug/deps/futures_channel-101788c67633c990.rmeta: /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/lib.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/lock.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/mpsc/mod.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/mpsc/queue.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/mpsc/sink_impl.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/oneshot.rs
+
+/Users/nasanjargal/Desktop/1rest/rest/target/rls/debug/deps/futures_channel-101788c67633c990.d: /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/lib.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/lock.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/mpsc/mod.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/mpsc/queue.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/mpsc/sink_impl.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/oneshot.rs
+
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/lib.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/lock.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/mpsc/mod.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/mpsc/queue.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/mpsc/sink_impl.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.19/src/oneshot.rs:

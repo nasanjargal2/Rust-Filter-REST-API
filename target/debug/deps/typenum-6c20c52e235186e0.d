@@ -1,0 +1,18 @@
+/Users/nasanjargal/Desktop/1rest/rest/target/debug/deps/typenum-6c20c52e235186e0.rmeta: /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/lib.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/bit.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/int.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/marker_traits.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/operator_aliases.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/private.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/type_operators.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/uint.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/array.rs /Users/nasanjargal/Desktop/1rest/rest/target/debug/build/typenum-006ea1b6db8bb685/out/op.rs /Users/nasanjargal/Desktop/1rest/rest/target/debug/build/typenum-006ea1b6db8bb685/out/consts.rs
+
+/Users/nasanjargal/Desktop/1rest/rest/target/debug/deps/typenum-6c20c52e235186e0.d: /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/lib.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/bit.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/int.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/marker_traits.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/operator_aliases.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/private.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/type_operators.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/uint.rs /Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/array.rs /Users/nasanjargal/Desktop/1rest/rest/target/debug/build/typenum-006ea1b6db8bb685/out/op.rs /Users/nasanjargal/Desktop/1rest/rest/target/debug/build/typenum-006ea1b6db8bb685/out/consts.rs
+
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/lib.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/bit.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/int.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/marker_traits.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/operator_aliases.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/private.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/type_operators.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/uint.rs:
+/Users/nasanjargal/.cargo/registry/src/github.com-1ecc6299db9ec823/typenum-1.15.0/src/array.rs:
+/Users/nasanjargal/Desktop/1rest/rest/target/debug/build/typenum-006ea1b6db8bb685/out/op.rs:
+/Users/nasanjargal/Desktop/1rest/rest/target/debug/build/typenum-006ea1b6db8bb685/out/consts.rs:
+
+# env-dep:TYPENUM_BUILD_CONSTS=/Users/nasanjargal/Desktop/1rest/rest/target/debug/build/typenum-006ea1b6db8bb685/out/consts.rs
+# env-dep:TYPENUM_BUILD_OP=/Users/nasanjargal/Desktop/1rest/rest/target/debug/build/typenum-006ea1b6db8bb685/out/op.rs
