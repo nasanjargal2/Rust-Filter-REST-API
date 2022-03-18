@@ -245,17 +245,20 @@ impl Users {
                     count = count + 2;
                     let filter: i32 = filter_fields[count].parse().unwrap();
                     query = query.filter(users::id.eq(filter));
-                } else if filter_fields[count].contains("username") {
+                }
+                else if filter_fields[count].contains("username") {
                     count = count + 2;
 
                     let filter: String = filter_fields[count].to_string();
 
                     query = query.filter(users::username.eq(filter));
-                } else if filter_fields[count].contains("displayname") {
+                }
+                else if filter_fields[count].contains("displayname") {
                     count = count + 2;
                     let filter: String = filter_fields[count].parse().unwrap();
                     query = query.filter(users::displayname.eq(filter));
-                } else if filter_fields[count].contains("descriptions") {
+                } 
+                else if filter_fields[count].contains("descriptions") {
                     count = count + 2;
                     // println!("elment shagav{:?}", filter_element[count]);
 
@@ -271,20 +274,24 @@ impl Users {
                         count += 2;
                         let filter: i32 = filter_fields[count].parse().unwrap();
                         query = query.or_filter(users::id.eq(filter));
-                    } else if filter_fields[count].contains("username") {
+                    } 
+                    else if filter_fields[count].contains("username") {
                         count += 2;
                         let filter: String = filter_fields[count].parse().unwrap();
                         query = query.or_filter(users::username.eq(filter));
-                    } else if filter_fields[count].contains("displayname") {
+                    } 
+                    else if filter_fields[count].contains("displayname") {
                         count += 2;
                         let filter: String = filter_fields[count].parse().unwrap();
                         query = query.or_filter(users::displayname.eq(filter));
-                    } else if filter_fields[count].contains("descriptions") {
+                    } 
+                    else if filter_fields[count].contains("descriptions") {
                         if filter_fields[count].contains("=") {
                             count += 2;
                             let filter: String = filter_fields[count].parse().unwrap();
                             query = query.or_filter(users::descriptions.eq(filter));
-                        } else {
+                        } 
+                        else {
                             count += 2;
                             let filter: String = filter_fields[count].parse().unwrap();
                             query =
@@ -303,15 +310,18 @@ impl Users {
                         count += 2;
                         let filter: i32 = filter_fields[count].parse().unwrap();
                         query = query.filter(users::id.eq(filter));
-                    } else if filter_fields[count].contains("username") {
+                    } 
+                    else if filter_fields[count].contains("username") {
                         count += 2;
                         let filter: String = filter_fields[count].parse().unwrap();
                         query = query.filter(users::username.eq(filter));
-                    } else if filter_fields[count].contains("displayname") {
+                    } 
+                    else if filter_fields[count].contains("displayname") {
                         count += 2;
                         let filter: String = filter_fields[count].parse().unwrap();
                         query = query.filter(users::displayname.eq(filter));
-                    } else if filter_fields[count].contains("descriptions") {
+                    } 
+                    else if filter_fields[count].contains("descriptions") {
                         // if filter_fields[count].contains("=") {
                         //     let filter: String = filter_fields[cqount].parse().unwrap();
                         //     query = query.filter(users::descriptions.eq(filter));
@@ -466,7 +476,7 @@ async fn main() -> std::io::Result<()> {
 
     //----------------------------------------------------Start HTTP server--------------------------------------------------------//
     //----------------------------------------------------Start HTTP server--------------------------------------------------------//
-
+ 
     HttpServer::new(|| App::new().configure(init_routes))
         .bind(format!("{}:{}", host, port))?
         .run()
