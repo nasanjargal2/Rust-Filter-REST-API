@@ -74,11 +74,12 @@ pub struct QueryInfo {
     pub filter: Option<String>, // where
     pub limit: Option<i64>,     // elements of one page
     pub limit_full: Option<bool>,
+    pub total_count: Option<bool>,
 }
 //QWERY COUNT LIMIT
 #[derive(Serialize, Deserialize, Debug)]
 pub struct CustomStruct {
-    pub total_count: i64,
+    pub total_count: Option<i64>,
     // pub filter: Option<String>,\         // where
     pub has_more: bool,
     pub limit: Option<i64>,
@@ -231,7 +232,10 @@ impl Users {
         let conn = conn();
 
         let mut query = users::table.into_boxed();
-
+        let mut total_count :Option<i64> = None ;
+        if req.total_count.is_some(){
+            total_count = Some(users.count().first::<i64>(&conn)?);
+        }
         if req.filter.is_some() {
             //
             let mut count = 0;
@@ -354,51 +358,64 @@ impl Users {
             };
 
         }
+        
 
-        let data = query.load::<Users>(&conn);
-        println!("\n\ndata = {:?}", data);
-        //    [ 1, 2, 3, 4, 5, 6 7] offset 1 limit  4
-        // result [2,3, 4, 5]
+        // println!("\n\ndata = {:?}", data);
+        // //    [ 1, 2, 3, 4, 5, 6 7] offset 1 limit  4
+        // // result [2,3, 4, 5]
 
-        let total_counts: i64 = data.as_ref().unwrap().len().try_into().unwrap();
-        let mut req_offset = 0;
-        let mut req_limit = usize::try_from(total_counts).unwrap();
+        // let mut req_offset = 0;
+        // let mut req_limit = usize::try_from(total_counts).unwrap();
 
-        if req.offset.is_some() && req.limit.is_some() {
-            req_offset = usize::try_from(req.offset.unwrap()).unwrap();
-            req_limit = usize::try_from(req.limit.unwrap()).unwrap();
-            let mut hex: usize = 0;
-            if req_offset < usize::try_from(total_counts).unwrap() {
-                hex = usize::try_from(total_counts).unwrap() - req_offset;
+        if req.limit.is_some(){
+            let limit = req.limit.unwrap() + 1; 
+            if req.offset.is_some() {
+                query = query.limit(limit).offset(req.offset.unwrap());
             }
-            println!("hex hevlvev ----------{:?}", hex);
-            if req_limit > hex {
-                if req.limit_full.is_some() {
-                    println!("----------{:?}-------------", req_offset);
-                    println!("----------{:?}-------------", req_limit);
-
-                    let l = req_limit - hex;
-                    req_offset = req_offset - l;
-
-                    req_limit = hex + l;
-                } 
-                else {
-                    req_limit = hex
-                }
+            else  {
+                query = query.limit(limit);
             }
 
-            req_limit = req_limit + req_offset;
+            // req_offset = usize::try_from(req.offset.unwrap()).unwrap();
+            // req_limit = usize::try_from(req.limit.unwrap()).unwrap();
+            // let mut hex: usize = 0;
+            // if req_offset < usize::try_from(total_counts).unwrap() {
+            //     hex = usize::try_from(total_counts).unwrap() - req_offset;
+            // }
+            // println!("hex hevlvev ----------{:?}", hex);
+            // if req_limit > hex {
+            //     if req.limit_full.is_some() {
+            //         println!("----------{:?}-------------", req_offset);
+            //         println!("----------{:?}-------------", req_limit);
+
+            //         let l = req_limit - hex;
+            //         req_offset = req_offset - l;
+
+            //         req_limit = hex + l;
+            //     } 
+            //     else {
+            //         req_limit = hex
+            //     }
+            // }
+
+            // req_limit = req_limit + req_offset;
         }
 
-        let cutest = data.as_ref().unwrap().get(req_offset..req_limit).unwrap();
-        println!("count = {:?}", total_counts);
 
+        let data = query.load::<Users>(&conn)?;
+
+        let total_counts: i64 = data.len().try_into().unwrap();
+        // println!("count = {:?}", total_counts);
+        let mut cutest = data.as_ref();
         let limit = req.limit.as_ref();
         //has more
         let mut has_more: bool = false;
         if req.limit.is_some() {
-            if total_counts > (req.limit.unwrap() + req.offset.unwrap()) {
+            if total_counts > req.limit.unwrap() {
                 if req.limit.unwrap() != 0 {
+                    
+                    let req_limit = usize::try_from(req.limit.unwrap()).unwrap();
+                    cutest = data.get(0..req_limit).unwrap();
                     has_more = true;
                 }
             }
@@ -410,10 +427,10 @@ impl Users {
             has_more
         );
 
-        let total_items = data.as_ref();
+        // let total_items = data.as_ref();
         let items_per_page = 10;
         let mut res = CustomStruct {
-            total_count: total_counts,
+            total_count: total_count,
             has_more: has_more,
             limit: req.limit,
             items: cutest.to_vec(),
