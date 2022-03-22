@@ -232,70 +232,61 @@ impl Users {
         let conn = conn();
 
         let mut query = users::table.into_boxed();
-        let mut total_count :Option<i64> = None ;
-        if req.total_count.is_some(){
+        // TOTAL COUNT
+        let mut total_count: Option<i64> = None;
+        if req.total_count.is_some() {
             total_count = Some(users.count().first::<i64>(&conn)?);
         }
+        //FILTER 
         if req.filter.is_some() {
-            //
             let mut count = 0;
             let filter_fields: Vec<_> = req.filter.as_ref().unwrap().split_whitespace().collect();
             println!("filter fields hevlev {:?}", filter_fields);
-            // let filter_element: Vec<_> = filter_fields[count].split("=").collect();
+
             for element in &filter_fields {
-                // println!("count hevlev {}", count);
-                // println!("{:?}", filter_fields[count]);
                 if filter_fields[count].contains("id") {
                     count = count + 2;
                     let filter: i32 = filter_fields[count].parse().unwrap();
                     query = query.filter(users::id.eq(filter));
-                }
-                else if filter_fields[count].contains("username") {
+                } else if filter_fields[count].contains("username") {
                     count = count + 2;
 
                     let filter: String = filter_fields[count].to_string();
 
                     query = query.filter(users::username.eq(filter));
-                }
-                else if filter_fields[count].contains("displayname") {
+                } else if filter_fields[count].contains("displayname") {
                     count = count + 2;
                     let filter: String = filter_fields[count].parse().unwrap();
                     query = query.filter(users::displayname.eq(filter));
-                } 
-                else if filter_fields[count].contains("descriptions") {
+                } else if filter_fields[count].contains("descriptions") {
                     count = count + 2;
-                    // println!("elment shagav{:?}", filter_element[count]);
 
                     let filter_desc: String = filter_fields[2].parse().unwrap();
-                    // println!("filter shlgav descriptions {:?}",filter_desc);
+
                     query = query.filter(users::descriptions.like(format!("%{}%", filter_desc)));
                 }
                 //------------------------------Or---------------------------------------//
                 else if filter_fields[count].starts_with(&String::from("or")) {
                     count += 1;
-                    // let filter_element: Vec<_> = filter_fields[count].split("=").collect();
+
                     if filter_fields[count].contains("id") {
                         count += 2;
                         let filter: i32 = filter_fields[count].parse().unwrap();
                         query = query.or_filter(users::id.eq(filter));
-                    } 
-                    else if filter_fields[count].contains("username") {
+                    } else if filter_fields[count].contains("username") {
                         count += 2;
                         let filter: String = filter_fields[count].parse().unwrap();
                         query = query.or_filter(users::username.eq(filter));
-                    } 
-                    else if filter_fields[count].contains("displayname") {
+                    } else if filter_fields[count].contains("displayname") {
                         count += 2;
                         let filter: String = filter_fields[count].parse().unwrap();
                         query = query.or_filter(users::displayname.eq(filter));
-                    } 
-                    else if filter_fields[count].contains("descriptions") {
+                    } else if filter_fields[count].contains("descriptions") {
                         if filter_fields[count].contains("=") {
                             count += 2;
                             let filter: String = filter_fields[count].parse().unwrap();
                             query = query.or_filter(users::descriptions.eq(filter));
-                        } 
-                        else {
+                        } else {
                             count += 2;
                             let filter: String = filter_fields[count].parse().unwrap();
                             query =
@@ -306,31 +297,21 @@ impl Users {
                 }
                 //------------------------------And---------------------------------------//
                 else if filter_fields[count].starts_with(&String::from("and")) {
-                    // println!("{:?}", filter_element);
                     count += 1;
-                    // let filter_element: Vec<_> = filter_fields[count].split("=").collect();
-                    // println!(" filter element {:?}", filter_element);
+
                     if filter_fields[count].contains("id") {
                         count += 2;
                         let filter: i32 = filter_fields[count].parse().unwrap();
                         query = query.filter(users::id.eq(filter));
-                    } 
-                    else if filter_fields[count].contains("username") {
+                    } else if filter_fields[count].contains("username") {
                         count += 2;
                         let filter: String = filter_fields[count].parse().unwrap();
                         query = query.filter(users::username.eq(filter));
-                    } 
-                    else if filter_fields[count].contains("displayname") {
+                    } else if filter_fields[count].contains("displayname") {
                         count += 2;
                         let filter: String = filter_fields[count].parse().unwrap();
                         query = query.filter(users::displayname.eq(filter));
-                    } 
-                    else if filter_fields[count].contains("descriptions") {
-                        // if filter_fields[count].contains("=") {
-                        //     let filter: String = filter_fields[cqount].parse().unwrap();
-                        //     query = query.filter(users::descriptions.eq(filter));
-                        // }
-                        // else  {
+                    } else if filter_fields[count].contains("descriptions") {
                         count += 2;
                         let filter: String = filter_fields[count].parse().unwrap();
                         query = query.filter(users::descriptions.like(format!("%{}%", filter)));
@@ -343,7 +324,7 @@ impl Users {
                 }
             }
         }
-
+        //ORDER
         if let Some(order) = req.order {
             query = match order.as_ref() {
                 "id" => query.order(users::id.asc()),
@@ -356,56 +337,20 @@ impl Users {
                 "descriptions.desc" => query.order(users::descriptions.desc()),
                 _ => query,
             };
-
         }
-        
-
-        // println!("\n\ndata = {:?}", data);
-        // //    [ 1, 2, 3, 4, 5, 6 7] offset 1 limit  4
-        // // result [2,3, 4, 5]
-
-        // let mut req_offset = 0;
-        // let mut req_limit = usize::try_from(total_counts).unwrap();
-
-        if req.limit.is_some(){
-            let limit = req.limit.unwrap() + 1; 
+        //OFSET , LIMIT
+        if req.limit.is_some() {
+            let limit = req.limit.unwrap() + 1;
             if req.offset.is_some() {
                 query = query.limit(limit).offset(req.offset.unwrap());
-            }
-            else  {
+            } else {
                 query = query.limit(limit);
             }
-
-            // req_offset = usize::try_from(req.offset.unwrap()).unwrap();
-            // req_limit = usize::try_from(req.limit.unwrap()).unwrap();
-            // let mut hex: usize = 0;
-            // if req_offset < usize::try_from(total_counts).unwrap() {
-            //     hex = usize::try_from(total_counts).unwrap() - req_offset;
-            // }
-            // println!("hex hevlvev ----------{:?}", hex);
-            // if req_limit > hex {
-            //     if req.limit_full.is_some() {
-            //         println!("----------{:?}-------------", req_offset);
-            //         println!("----------{:?}-------------", req_limit);
-
-            //         let l = req_limit - hex;
-            //         req_offset = req_offset - l;
-
-            //         req_limit = hex + l;
-            //     } 
-            //     else {
-            //         req_limit = hex
-            //     }
-            // }
-
-            // req_limit = req_limit + req_offset;
         }
-
 
         let data = query.load::<Users>(&conn)?;
 
         let total_counts: i64 = data.len().try_into().unwrap();
-        // println!("count = {:?}", total_counts);
         let mut cutest = data.as_ref();
         let limit = req.limit.as_ref();
         //has more
@@ -413,7 +358,6 @@ impl Users {
         if req.limit.is_some() {
             if total_counts > req.limit.unwrap() {
                 if req.limit.unwrap() != 0 {
-                    
                     let req_limit = usize::try_from(req.limit.unwrap()).unwrap();
                     cutest = data.get(0..req_limit).unwrap();
                     has_more = true;
@@ -427,7 +371,6 @@ impl Users {
             has_more
         );
 
-        // let total_items = data.as_ref();
         let items_per_page = 10;
         let mut res = CustomStruct {
             total_count: total_count,
@@ -493,7 +436,7 @@ async fn main() -> std::io::Result<()> {
 
     //----------------------------------------------------Start HTTP server--------------------------------------------------------//
     //----------------------------------------------------Start HTTP server--------------------------------------------------------//
- 
+
     HttpServer::new(|| App::new().configure(init_routes))
         .bind(format!("{}:{}", host, port))?
         .run()
